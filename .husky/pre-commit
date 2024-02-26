@@ -1,1 +1,1 @@
-echo "Husky pre-commit hook is running"
+pnpm run pre-commit
