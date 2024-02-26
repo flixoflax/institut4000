@@ -11,6 +11,12 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.4.5)(tailwindcss@3.4.1)
+  '@fontsource/geist-mono':
+    specifier: ^5.0.1
+    version: 5.0.1
+  '@fontsource/geist-sans':
+    specifier: ^5.0.1
+    version: 5.0.1
   aos:
     specifier: ^2.3.4
     version: 2.3.4
@@ -687,6 +693,14 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/geist-mono@5.0.1:
+    resolution: {integrity: sha512-fbLTXtnGagDEaKmRqAnjbqWZbZ3RR6RExvNikt3hLI/qJXxaBZZw8OH+Ve5rAxVxmKwz0a5GmPk2cqW0aapbfQ==}
+    dev: false
+
+  /@fontsource/geist-sans@5.0.1:
+    resolution: {integrity: sha512-Q/GGewhqc6WTtqbOQWaHCar/BZY3H6Nu0J65BuWYOCXUhc/iEhRP9n+7V2KZ3X8+/ZNMCfFzxzrUZrQYB/lnNw==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
