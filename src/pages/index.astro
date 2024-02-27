@@ -1,9 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import CaseStudies from "../components/CaseStudies.astro";
+
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Institut 4000">
-  <main
+  <Navbar client:idle />
+  <Hero />
+  <About />
+  <Services />
+  <CaseStudies />
+  <!-- <main
     class="prose mx-auto flex h-screen max-w-screen-md flex-col justify-center p-4 md:p-8"
   >
     <h1 data-aos="fade-up">Coming Soon</h1>
@@ -27,5 +40,7 @@ import Layout from "../layouts/Layout.astro";
       href="mailto:niels@institut4000.io?subject=Project%20Proposal%3A"
       >niels@institut4000.io</a
     >
-  </main>
+  </main> -->
+  <CTA />
+  <Footer />
 </Layout>

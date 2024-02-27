@@ -1,0 +1,46 @@
+---
+import Service from "../components/Service.astro";
+import Container from "../layouts/Container.astro";
+---
+
+<Container
+  className={"pt-20 md:pt-32 lg:pt-56"}
+  id={"services"}
+  backgroundColor={"#fff"}
+>
+  <div class="flex flex-col items-center space-y-4" data-aos="fade-up">
+    <h2 class="text-4xl font-bold tracking-tight text-black md:text-5xl">
+      Services
+    </h2>
+    <p class="text-center text-black/70">
+      Your Vision, My Expertise: Together, We Turn Ideas into Reality
+    </p>
+  </div>
+
+  <div
+    class="mt-16 grid grid-cols-1 gap-x-10 gap-y-7 md:grid-cols-2 lg:grid-cols-4"
+  >
+    <Service name="Development">
+      Skilled in full-stack development, I adeptly transform visions into
+      practical, user-focused online solutions that propel business success and
+      user engagement.
+    </Service>
+
+    <Service name="Design">
+      I craft visually appealing and functional designs, enabling businesses to
+      distinctively communicate their brand and ensure an engaging user journey.
+    </Service>
+
+    <Service name="Consulting">
+      I offer specialized consulting services in IT and business development,
+      aimed at enhancing operational efficiency and tackling intricate business
+      challenges.
+    </Service>
+
+    <Service name="Product Management">
+      My focus in product management is on efficient delivery and maintaining
+      high quality, aligning products with business objectives, market trends,
+      and user demands.
+    </Service>
+  </div>
+</Container>

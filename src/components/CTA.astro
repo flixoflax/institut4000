@@ -1,0 +1,44 @@
+---
+import Container from "../layouts/Container.astro";
+
+interface Props {
+  title?: string;
+  href?: string;
+  backgroundColor?: string;
+  textColor?: string;
+}
+
+const {
+  title = "Get in touch",
+  href = "mailto:contact@institut4000.io?subject=%E2%9C%8C%20Hi%20there!",
+  backgroundColor = "black",
+  textColor = "#fff",
+} = Astro.props;
+---
+
+<Container
+  className={"relative overflow-hidden py-20 lg:py-36"}
+  backgroundColor={backgroundColor}
+  id={"contact"}
+>
+  <div
+    class="z-30 flex flex-col items-start justify-center space-y-10 md:items-center"
+  >
+    <h2
+      data-aos="fade-up"
+      class="w-full text-4xl font-bold md:text-center md:text-6xl lg:text-8xl"
+      style={`color: ${textColor}`}
+    >
+      <slot>Let's create something amazing together.</slot>
+    </h2>
+  </div>
+
+  <div class="mt-12 flex flex-col sm:items-center md:mt-16" data-aos="fade-up">
+    <a
+      href={href}
+      style={`color: ${backgroundColor}; background-color: ${textColor}`}
+      class="select-none rounded-md bg-white px-6 py-2.5 text-center text-black transition hover:bg-opacity-90"
+      >{title}</a
+    >
+  </div>
+</Container>

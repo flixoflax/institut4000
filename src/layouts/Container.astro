@@ -1,0 +1,15 @@
+---
+interface Props {
+  className?: string;
+  id?: string;
+  backgroundColor?: string;
+}
+
+const { className, id, backgroundColor = "#fff" } = Astro.props;
+---
+
+<div class={className} id={id} style={`background-color: ${backgroundColor}`}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <slot />
+  </div>
+</div>

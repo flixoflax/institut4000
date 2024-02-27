@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  client: string;
+  imgUrl: string;
+  href?: string;
+  incompleteText?: string;
+}
+
+const { client, href, imgUrl, incompleteText = "Coming Soon" } = Astro.props;
+
+const isComplete = href ? true : false;
+---
+
+{
+  isComplete ? (
+    <div class="group space-y-10">
+      <a href={href}>
+        <Image
+          src={imgUrl}
+          alt={`${client} case study`}
+          data-aos="fade-up"
+          inferSize
+          class="select-none"
+        />
+        <div class="space-y-5">
+          <h3 class="text-3xl font-semibold md:text-4xl" data-aos="fade-up">
+            {client} —
+          </h3>
+          <div class="py-5 text-black/70" data-aos="fade-up">
+            <slot>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Blanditiis, error temporibus dolor saepe praesentium architecto
+              nostrum provident eius aperiam laboriosam iusto ea mollitia
+              exercitationem illum odit cumque nisi voluptate repellat?
+            </slot>
+          </div>
+
+          <div data-aos="fade-up">
+            <a
+              href={href}
+              class="inline-block select-none rounded-md bg-black px-6 py-2.5 text-center text-white transition hover:bg-opacity-90"
+            >
+              Read Case Study
+            </a>
+          </div>
+        </div>
+      </a>
+    </div>
+  ) : (
+    <div class="group space-y-10">
+      <Image
+        src={imgUrl}
+        alt={`${client} case study`}
+        data-aos="fade-up"
+        inferSize
+        class="select-none"
+      />
+      <div class="space-y-5">
+        <h3 class="text-3xl font-semibold md:text-4xl" data-aos="fade-up">
+          {client} —
+        </h3>
+        <div class="pb-5 text-black/70" data-aos="fade-up">
+          <slot>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Blanditiis, error temporibus dolor saepe praesentium architecto
+            nostrum provident eius aperiam laboriosam iusto ea mollitia
+            exercitationem illum odit cumque nisi voluptate repellat?
+          </slot>
+        </div>
+
+        <div data-aos="fade-up">
+          <button
+            disabled
+            class="inline-block cursor-not-allowed select-none rounded-md bg-gray-200 px-6 py-2.5 text-center text-black transition hover:bg-opacity-90"
+          >
+            {incompleteText}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}

@@ -1,0 +1,42 @@
+---
+import Container from "../layouts/Container.astro";
+const copyrightYear = new Date().getFullYear();
+
+interface Props {
+  backgroundColor?: string;
+  textColor?: string;
+}
+
+const { backgroundColor = "#000", textColor = "#fff" } = Astro.props;
+---
+
+<Container className={"py-10 lg:py-20"} backgroundColor={backgroundColor}>
+  <footer>
+    <div
+      class="flex flex-col justify-between space-y-2 md:flex-row md:items-center md:space-y-0"
+    >
+      <div class="">
+        <div class="text-sm" style={`color: ${textColor}; opacity: 0.85`}>
+          &copy; {copyrightYear} Institut 4000. All rights reserved.
+        </div>
+      </div>
+      <div class="flex space-x-2 md:space-x-5">
+        <a
+          href="/legal#imprint"
+          class="relative select-none text-center after:absolute after:inset-x-0 after:-bottom-2 after:mx-auto after:h-[2px] after:w-0 after:bg-current after:transition-all hover:after:w-full"
+          style={`color: ${textColor}`}
+        >
+          Imprint
+        </a>
+
+        <a
+          href="/legal#privacy"
+          class="relative select-none text-center after:absolute after:inset-x-0 after:-bottom-2 after:mx-auto after:h-[2px] after:w-0 after:bg-current after:transition-all hover:after:w-full"
+          style={`color: ${textColor}`}
+        >
+          Privacy Policy
+        </a>
+      </div>
+    </div>
+  </footer>
+</Container>

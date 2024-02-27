@@ -1,0 +1,12 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<div class="text-black/70" data-aos="fade-up">
+  <h3 class="my-3 text-2xl font-semibold text-black">{name}</h3>
+  <slot />
+</div>

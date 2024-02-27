@@ -19,6 +19,7 @@ if (!projectId || !dataset) {
 
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+import { colorInput } from "@sanity/color-input";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schema";
 
@@ -27,7 +28,7 @@ export default defineConfig({
   title: "Institut 4000",
   projectId,
   dataset,
-  plugins: [structureTool(), visionTool()],
+  plugins: [structureTool(), visionTool(), colorInput()],
   schema: {
     types: schemaTypes,
   },

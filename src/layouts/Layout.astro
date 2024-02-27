@@ -62,7 +62,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="min-h-screen">
     <slot />
     <script>
       // Animate on Scroll
@@ -70,6 +70,11 @@ const { title } = Astro.props;
 
       aosInit();
     </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
     <SpeedInsights />
   </body>
 </html>
