@@ -49,7 +49,7 @@ const getCaseStudies = async (): Promise<CaseStudy[]> => {
 `);
 };
 
-const getCaseStudy = async (slug: string): Promise<CaseStudyFull> => {
+const getCaseStudy = async (slug: Slug): Promise<CaseStudyFull> => {
   return await sanityClient.fetch<CaseStudyFull>(
     groq`
   *[_type == "caseStudy" && slug.current == $slug][0] {
