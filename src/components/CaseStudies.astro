@@ -29,7 +29,9 @@ const odd = sortedStudies.filter((_, index) => index % 2 === 0);
           <CaseStudy
             client={study.client}
             imgUrl={urlFor(study.thumbnail).url()}
-            href={study.draftText ? undefined : "/case-study/" + study.slug}
+            href={
+              study.draftText === null ? `/case-study/${study.slug}` : undefined
+            }
             incompleteText={study.draftText}
           >
             {study.description}
@@ -43,7 +45,9 @@ const odd = sortedStudies.filter((_, index) => index % 2 === 0);
           <CaseStudy
             client={study.client}
             imgUrl={urlFor(study.thumbnail).url()}
-            href={study.draftText ? undefined : "/case-study/" + study.slug}
+            href={
+              study.draftText === null ? `/case-study/${study.slug}` : undefined
+            }
             incompleteText={study.draftText}
           >
             {study.description}

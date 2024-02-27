@@ -23,12 +23,12 @@ export default defineType({
     defineField({
       name: "slug",
       title: "Slug",
+      validation: (Rule) => Rule.required(),
       type: "slug",
       options: {
         source: "client",
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "headline",

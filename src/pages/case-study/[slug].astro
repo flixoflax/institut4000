@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   const studies = await getCaseStudies();
   const filteredStudies = studies.filter((study) => study.draftText === null);
   return filteredStudies.map((study) => ({
-    params: { slug: study.slug },
+    params: { slug: study.slug as string },
   }));
 }
 
