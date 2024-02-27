@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar";
+
+import CaseStudyHeader from "../../components/CaseStudyHeader.astro";
+import CTA from "../../components/CTA.astro";
+import Footer from "../../components/Footer.astro";
+import { getCaseStudies } from "../../util/sanity";
+import { InferGetStaticParamsType } from "astro";
+import { getCaseStudy } from "../../util/sanity";
+
+export async function getStaticPaths() {
+  const studies = await getCaseStudies();
+  const filteredStudies = studies.filter((study) => study.draftText === null);
+  return filteredStudies.map((study) => ({
+    params: { slug: study.slug },
+  }));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const study = await getCaseStudy(slug);
+---
+
+<Layout title="Institut 4000">
+  <Navbar
+    client:idle
+    backgroundColor={study.backgroundColor.hex}
+    textColor={study.textColor.hex}
+  />
+  <main>
+    <CaseStudyHeader study={study} />
+    <div class="h-96"></div>
+  </main>
+  <CTA
+    backgroundColor={study.backgroundColor.hex}
+    textColor={study.textColor.hex}
+  />
+  <Footer
+    backgroundColor={study.backgroundColor.hex}
+    textColor={study.textColor.hex}
+  />
+</Layout>

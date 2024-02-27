@@ -1,21 +1,10 @@
 ---
 import CaseStudy from "../components/CaseStudy.astro";
 import Container from "../layouts/Container.astro";
-import { sanityClient } from "sanity:client";
-import type { CaseStudyType } from "../util/sanityTypes";
 import { urlFor } from "../util/image";
+import { getCaseStudies } from "../util/sanity";
 
-const studies = await sanityClient.fetch<CaseStudyType[]>(`
-    *[_type == "caseStudy"] | order(position asc) {
-    "client": client,
-    "thumbnail": thumbnail,
-    "position": position,
-    "shortDescription": shortDescription,
-    "slug": slug.current,
-    "draftText": draftText
-    }
-`);
-
+const studies = await getCaseStudies();
 const sortedStudies = studies.sort((a, b) => {
   if (a.position! < b.position!) return -1;
   else return 1;
@@ -25,7 +14,7 @@ const odd = sortedStudies.filter((_, index) => index % 2 === 0);
 ---
 
 <Container className={"py-20 md:py-32 lg:py-56"} id="case-studies">
-  <div class="space-y-4" data-sal="slide-up" data-sal-duration="1000">
+  <div class="space-y-4" data-aos="fade-up">
     <h2 class="text-4xl font-bold tracking-tight md:text-5xl">Case Studies</h2>
     <p class="text-black/70">
       Ideas turned into reality: See how my services have helped others succeed.
@@ -43,7 +32,7 @@ const odd = sortedStudies.filter((_, index) => index % 2 === 0);
             href={study.draftText ? undefined : "/case-study/" + study.slug}
             incompleteText={study.draftText}
           >
-            {study.shortDescription}
+            {study.description}
           </CaseStudy>
         ))
       }
@@ -57,7 +46,7 @@ const odd = sortedStudies.filter((_, index) => index % 2 === 0);
             href={study.draftText ? undefined : "/case-study/" + study.slug}
             incompleteText={study.draftText}
           >
-            {study.shortDescription}
+            {study.description}
           </CaseStudy>
         ))
       }

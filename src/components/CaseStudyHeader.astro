@@ -1,0 +1,58 @@
+---
+import Container from "../layouts/Container.astro";
+import type { CaseStudyFull } from "../util/sanity";
+
+type Props = {
+  study: CaseStudyFull;
+};
+
+const { study } = Astro.props;
+---
+
+<Container
+  className={"py-16 md:py-20 lg:py-28"}
+  backgroundColor={study.backgroundColor.hex}
+>
+  <div class="h-20"></div>
+  <div class="grid gap-y-5 md:gap-y-10 lg:grid-cols-12">
+    <div class="space-y-3 lg:col-span-10 lg:space-y-8">
+      <span
+        set:text={study.client}
+        data-aos="fade-up"
+        style={`color: ${study.textColor.hex}`}
+        class="text-xl font-semibold md:text-2xl lg:text-3xl"
+      />
+      <h1
+        class="text-4xl font-semibold md:text-5xl lg:text-6xl"
+        style={`color: ${study.textColor.hex}`}
+        set:html={study.headline}
+        data-aos="fade-up"
+      />
+    </div>
+    <div
+      class="text-white/70 md:text-lg lg:col-span-12 lg:row-start-2"
+      set:html={study.subheadline}
+    />
+  </div>
+</Container>
+
+<Container className={"pt-16 md:pt-20 lg:pt-28"}>
+  <div class="grid gap-x-20 gap-y-5 md:gap-y-10 lg:grid-cols-12">
+    <div class="space-y-8 lg:col-span-8">
+      <h2
+        set:html={study.subsubheadline}
+        class="text-2xl font-semibold md:text-3xl lg:text-4xl"
+      />
+      <p
+        class="font-sans text-black/70 lg:text-lg"
+        set:html={study.description}
+      />
+    </div>
+    <div class="lg:col-span-4 lg:text-lg">
+      <h2 class="mb-2 font-semibold">Services I provided:</h2>
+      <div class="space-y-2 text-black/70">
+        {study.services.map((service) => <p class="">— {service}</p>)}
+      </div>
+    </div>
+  </div>
+</Container>

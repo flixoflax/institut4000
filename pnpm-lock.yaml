@@ -56,6 +56,12 @@ dependencies:
   astro:
     specifier: ^4.4.5
     version: 4.4.5(typescript@5.3.3)
+  astro-portabletext:
+    specifier: ^0.9.6
+    version: 0.9.6
+  groq:
+    specifier: ^3.30.1
+    version: 3.30.1
   lint-staged:
     specifier: ^15.2.2
     version: 15.2.2
@@ -76,6 +82,9 @@ dependencies:
     version: 5.3.3
 
 devDependencies:
+  '@portabletext/types':
+    specifier: ^2.0.8
+    version: 2.0.8
   '@sanity/types':
     specifier: ^3.30.1
     version: 3.30.1
@@ -1376,7 +1385,6 @@ packages:
   /@portabletext/types@2.0.8:
     resolution: {integrity: sha512-eiq9/kMX2bYezS4/kLFk3xNnruCFjCDdw6aYEv5ECHVKkYROiuLd3/AsP5d7tWF3+kPPy6tB0Wq8aqDG/URHGA==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
-    dev: false
 
   /@rexxars/react-json-inspector@8.0.1(react@18.2.0):
     resolution: {integrity: sha512-XAsgQwqG8fbDGpWnsvOesRMgPfvwuU7Cx3/cUf/fNIRmGP8lj2YYIf5La/4ayvZLWlSw4tTb4BPCKdmK9D8RuQ==}
@@ -2829,6 +2837,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /astro-portabletext@0.9.6:
+    resolution: {integrity: sha512-v8YKRgjCpaxr94NefXRsH5ti9YoXqCrYah46epdJ4AdwtvIiLZA8vONFQjk5Y2cJ2UEEeGd+/8lo+tWmlo3aPw==}
+    dependencies:
+      '@portabletext/toolkit': 2.0.10
+      '@portabletext/types': 2.0.8
+    dev: false
 
   /astro@4.4.5(typescript@5.3.3):
     resolution: {integrity: sha512-ccat42P5qr281JExywVsK/BLeKgwSL+oLxJP195s4Wvj3nL32djw+WNJNctuDDTJ5XWgvPdHZjBtSDNO5OgagQ==}
@@ -4859,6 +4874,11 @@ packages:
   /groq-js@1.4.3:
     resolution: {integrity: sha512-h2vFXJ/U5VX9bzlqqZLgx/XS0ibNJza4eMxUjZTqkpe3gKafFIJSkMP0RS/XEQR18gJMjXAJNziWdY7JYYfl7w==}
     engines: {node: '>= 14'}
+    dev: false
+
+  /groq@3.30.1:
+    resolution: {integrity: sha512-z/VvgsFsp0TzlPNGCbrJ15z40HHfzV8AQfzlxv9r8lMhmi7xlSvZT0P6AdBhRpTtgv7R77iotoJUGiswd68WXQ==}
+    engines: {node: '>=18'}
     dev: false
 
   /gunzip-maybe@1.4.2:

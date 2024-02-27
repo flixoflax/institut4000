@@ -1,0 +1,32 @@
+---
+import Container from "../layouts/Container.astro";
+
+interface Props {
+  headline: string;
+}
+
+const { headline } = Astro.props;
+---
+
+<Container className={"py-16 md:py-20 lg:py-28"} backgroundColor={"#000"}>
+  <div class="grid gap-y-5 md:gap-y-10 lg:grid-cols-12">
+    <div class="lg:col-span-10">
+      <h1
+        data-aos="slide-up"
+        class="font-display text-4xl text-white md:text-5xl lg:text-6xl"
+        set:html={headline}
+      />
+    </div>
+    <div
+      class="text-white/70 md:text-lg lg:col-span-8 lg:row-start-2"
+      data-aos="fade-up"
+    >
+      <slot
+        >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque dolore
+        numquam culpa labore magni, deserunt blanditiis quidem dolorem eum
+        maiores, temporibus at aliquid saepe, pariatur tenetur harum quas
+        repudiandae inventore.</slot
+      >
+    </div>
+  </div>
+</Container>

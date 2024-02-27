@@ -36,16 +36,21 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "shortDescription",
-      title: "Short Description",
-      type: "text",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "longDescription",
-      title: "Long Description",
+      name: "subheadline",
+      title: "Sub Headline",
       type: "array",
       of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "subsubheadline",
+      title: "Sub Sub Headline",
+      type: "text",
+    }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "text",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "services",
