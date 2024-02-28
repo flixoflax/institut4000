@@ -4,11 +4,13 @@ import { hexToRgbA } from "../util/color";
 interface NavbarProps {
   backgroundColor?: string;
   textColor?: string;
+  addSlash?: boolean;
 }
 
 const Navbar = ({
   backgroundColor = "#000",
   textColor = "#fff",
+  addSlash = false,
 }: NavbarProps) => {
   const [open, setOpen] = React.useState<boolean>(false);
   const [scrollShow, setScrollShow] = React.useState(true);
@@ -94,14 +96,14 @@ const Navbar = ({
 
           <div className="hidden flex-1 justify-center space-x-10 whitespace-nowrap lg:flex">
             <a
-              href="#services"
+              href={`${addSlash ? "/" : ""}#services`}
               className="relative select-none text-center after:absolute after:inset-x-0 after:-bottom-2 after:mx-auto after:h-[2px] after:w-0 after:bg-current after:transition-all hover:after:w-full"
             >
               Services
             </a>
 
             <a
-              href="#case-studies"
+              href={`${addSlash ? "/" : ""}#case-studies`}
               className="relative select-none text-center after:absolute after:inset-x-0 after:-bottom-2 after:mx-auto after:h-[2px] after:w-0 after:bg-current after:transition-all hover:after:w-full"
             >
               Case Studies
@@ -157,7 +159,7 @@ const Navbar = ({
                   className="relative select-none text-4xl after:absolute after:inset-x-0 after:-bottom-2 after:mx-auto after:h-[2px] after:w-0 after:bg-current after:transition-all"
                   data-aos="fade-right"
                   data-aos-duration="400"
-                  href="#services"
+                  href={`${addSlash ? "/" : ""}#services`}
                   onClick={toggleMenu}
                 >
                   Services
@@ -167,7 +169,7 @@ const Navbar = ({
                   data-aos="fade-right"
                   data-aos-delay="200"
                   data-aos-duration="400"
-                  href="#case-studies"
+                  href={`${addSlash ? "/" : ""}#case-studies`}
                   onClick={toggleMenu}
                 >
                   Case Studies

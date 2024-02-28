@@ -1,4 +1,4 @@
-export const hexToRgbA = (hex: string) => {
+export const hexToRgbA = (hex: string, a: number = 0.7) => {
   let c;
   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
     c = hex.substring(1).split("");
@@ -10,7 +10,7 @@ export const hexToRgbA = (hex: string) => {
     return (
       "rgba(" +
       [(num >> 16) & 255, (num >> 8) & 255, num & 255].join(",") +
-      ",0.8)"
+      `,${a})`
     );
   }
   throw new Error("Bad Hex");

@@ -1,0 +1,67 @@
+---
+import { type Image as ImageType, isImage } from "@sanity/types";
+import type { PortableTextBlock } from "@portabletext/types";
+import { type Props as YoutubeType, Youtube, isYoutubeEmbed } from "./Youtube";
+import { Image } from "astro:assets";
+import { urlFor } from "../util/image";
+import { hexToRgbA } from "../util/color";
+import { PortableText } from "astro-portabletext";
+
+interface Props {
+  left?: boolean;
+  content: Array<PortableTextBlock | ImageType | YoutubeType> | null;
+  textColor?: string;
+}
+
+const { left = false, content, textColor } = Astro.props;
+const styleText =
+  textColor !== undefined
+    ? `
+.text-color-prose {
+    --tw-prose-body: ${hexToRgbA(textColor, 0.9)} !important;
+    --tw-prose-headings: ${textColor} !important;
+    --tw-prose-links: ${textColor} !important;
+    --tw-prose-bold: ${textColor} !important;
+    --tw-prose-quotes: ${hexToRgbA(textColor, 0.9)} !important;
+    --tw-prose-quote-borders: ${textColor} !important;
+}
+`
+    : undefined;
+---
+
+<>
+  {
+    content &&
+      content.map((imageOrText) => {
+        if (isImage(imageOrText)) {
+          return (
+            <div data-aos={textColor ? "fade-up" : undefined}>
+              <Image
+                src={urlFor(imageOrText).url()}
+                alt=""
+                inferSize
+                class="select-none"
+              />
+            </div>
+          );
+        } else if (isYoutubeEmbed(imageOrText)) {
+          return (
+            <div data-aos={textColor ? "fade-up" : undefined}>
+              <Youtube client:idle {...imageOrText} />
+            </div>
+          );
+        } else {
+          return (
+            <div
+              data-aos={textColor ? "fade-up" : undefined}
+              class={`prose ${left ? "" : "mx-auto"} max-w-4xl prose-headings:mb-[0.75em] prose-headings:mt-[3em] prose-h2:text-3xl prose-h3:text-2xl prose-a:underline-offset-4 prose-blockquote:my-4 prose-blockquote:not-italic ${textColor ? "text-color-prose" : "prose-blockquote:text-black/70"} prose-strong:font-semibold prose-h2:lg:text-5xl prose-h3:lg:text-4xl`}
+            >
+              <PortableText value={imageOrText} />
+            </div>
+          );
+        }
+      })
+  }
+</>
+
+<style set:html={textColor ? styleText : undefined}></style>

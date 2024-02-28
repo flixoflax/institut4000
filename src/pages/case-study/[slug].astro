@@ -1,13 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar";
-
 import CaseStudyHeader from "../../components/CaseStudyHeader.astro";
 import CTA from "../../components/CTA.astro";
 import Footer from "../../components/Footer.astro";
 import { getCaseStudies } from "../../util/sanity";
 import type { InferGetStaticParamsType } from "astro";
 import { getCaseStudy } from "../../util/sanity";
+import Container from "../../layouts/Container.astro";
+import Content from "../../components/Content.astro";
 
 export async function getStaticPaths() {
   const studies = await getCaseStudies();
@@ -23,15 +24,18 @@ const { slug } = Astro.params as Params;
 const study = await getCaseStudy(slug);
 ---
 
-<Layout title="Institut 4000">
+<Layout title={`${study.client} | Institut 4000`}>
   <Navbar
+    addSlash
     client:idle
     backgroundColor={study.backgroundColor.hex}
     textColor={study.textColor.hex}
   />
   <main>
     <CaseStudyHeader study={study} />
-    <div class="h-96"></div>
+    <Container className="py-20 text-black/70 md:py-32 lg:py-56 lg:text-lg">
+      <Content content={study.content} />
+    </Container>
   </main>
   <CTA
     backgroundColor={study.backgroundColor.hex}

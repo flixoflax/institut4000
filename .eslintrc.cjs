@@ -36,5 +36,7 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["@typescript-eslint"],
-  rules: {},
+  rules: {
+    "@typescript-eslint/triple-slash-reference": "off",
+  },
 };

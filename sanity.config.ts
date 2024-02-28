@@ -21,6 +21,7 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { colorInput } from "@sanity/color-input";
 import { visionTool } from "@sanity/vision";
+import { media } from "sanity-plugin-media";
 import { schemaTypes } from "./schema";
 
 export default defineConfig({
@@ -28,7 +29,7 @@ export default defineConfig({
   title: "Institut 4000",
   projectId,
   dataset,
-  plugins: [structureTool(), visionTool(), colorInput()],
+  plugins: [structureTool(), visionTool(), colorInput(), media()],
   schema: {
     types: schemaTypes,
   },

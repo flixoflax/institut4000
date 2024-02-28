@@ -1,6 +1,7 @@
 import type { ImageAsset, Image, Slug } from "@sanity/types";
 import type { PortableTextBlock } from "@portabletext/types";
 import { sanityClient } from "sanity:client";
+import type { Props as YouTube } from "../components/Youtube";
 import groq from "groq";
 
 type CaseStudy = {
@@ -25,7 +26,7 @@ interface CaseStudyFull {
   client: string;
   slug: Slug;
   headline?: string;
-  subheadline: PortableTextBlock[];
+  subheadline: Array<PortableTextBlock | Image | YouTube>;
   subsubheadline: string;
   description: string;
   services: string[];
@@ -33,7 +34,7 @@ interface CaseStudyFull {
   textColor: Color;
   draftText?: string;
   position?: number;
-  content: Array<PortableTextBlock | Image>;
+  content: Array<PortableTextBlock | Image | YouTube>;
 }
 
 const getCaseStudies = async (): Promise<CaseStudy[]> => {
