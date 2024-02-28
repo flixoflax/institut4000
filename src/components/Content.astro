@@ -32,35 +32,53 @@ const styleText =
 <>
   {
     content &&
-      content.map((imageOrText) => {
-        if (isImage(imageOrText)) {
-          return (
-            <div data-aos={textColor ? "fade-up" : undefined}>
-              <Image
-                src={urlFor(imageOrText).url()}
-                alt=""
-                inferSize
-                class="select-none"
-              />
-            </div>
-          );
-        } else if (isYoutubeEmbed(imageOrText)) {
-          return (
-            <div data-aos={textColor ? "fade-up" : undefined}>
-              <Youtube client:idle {...imageOrText} />
-            </div>
-          );
-        } else {
-          return (
-            <div
-              data-aos={textColor ? "fade-up" : undefined}
-              class={`prose ${left ? "" : "mx-auto"} max-w-4xl prose-headings:mb-[0.75em] prose-headings:mt-[3em] prose-h2:text-3xl prose-h3:text-2xl prose-a:underline-offset-4 prose-blockquote:my-4 prose-blockquote:not-italic ${textColor ? "text-color-prose" : "prose-blockquote:text-black/70"} prose-strong:font-semibold prose-h2:lg:text-5xl prose-h3:lg:text-4xl`}
-            >
-              <PortableText value={imageOrText} />
-            </div>
-          );
+      (() => {
+        const elements = [];
+        let groupedTextBlocks: PortableTextBlock[] = [];
+
+        const flushTextBlocks = () => {
+          if (groupedTextBlocks.length > 0) {
+            elements.push(
+              <div
+                data-aos={textColor ? "fade-up" : undefined}
+                class={`prose ${left ? "" : "mx-auto"} max-w-4xl prose-headings:mb-[0.75em] prose-headings:mt-[3em] prose-h2:text-3xl prose-h3:text-2xl prose-a:underline-offset-4 prose-blockquote:my-4 prose-blockquote:not-italic ${textColor ? "text-color-prose" : "prose-blockquote:text-black/70"} prose-strong:font-semibold prose-h2:lg:text-5xl prose-h3:lg:text-4xl`}
+              >
+                <PortableText value={groupedTextBlocks} />
+              </div>,
+            );
+            groupedTextBlocks = []; // Reset the array
+          }
+        };
+
+        for (const item of content) {
+          if (isImage(item)) {
+            flushTextBlocks(); // Flush any accumulated text blocks before rendering an image
+            elements.push(
+              <div data-aos={textColor ? "fade-up" : undefined}>
+                <Image
+                  src={urlFor(item).url()}
+                  alt=""
+                  inferSize
+                  class="select-none"
+                />
+              </div>,
+            );
+          } else if (isYoutubeEmbed(item)) {
+            flushTextBlocks(); // Flush any accumulated text blocks before rendering a YouTube embed
+            elements.push(
+              <div data-aos={textColor ? "fade-up" : undefined}>
+                <Youtube client:idle {...item} />
+              </div>,
+            );
+          } else {
+            groupedTextBlocks.push(item as PortableTextBlock); // Accumulate text blocks
+          }
         }
-      })
+
+        flushTextBlocks(); // Ensure any remaining text blocks are rendered
+
+        return elements;
+      })()
   }
 </>
 

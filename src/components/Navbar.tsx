@@ -47,7 +47,10 @@ const Navbar = ({
   return (
     <nav
       className={`${open ? "h-screen" : null} fixed z-50 w-full transform transition-transform duration-300 lg:h-20 ${scrollShow ? "translate-y-0" : "-translate-y-full"} backdrop-blur-md`}
-      style={{ backgroundColor: hexToRgbA(backgroundColor), color: textColor }}
+      style={{
+        backgroundColor: hexToRgbA(backgroundColor, 0.8),
+        color: textColor,
+      }}
     >
       <div
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
