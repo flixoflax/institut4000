@@ -9,11 +9,12 @@ const { headline } = Astro.props;
 ---
 
 <Container className={"py-16 md:py-20 lg:py-28"} backgroundColor={"#000"}>
+  <div class="h-20"></div>
   <div class="grid gap-y-5 md:gap-y-10 lg:grid-cols-12">
     <div class="lg:col-span-10">
       <h1
         data-aos="slide-up"
-        class="font-display text-4xl text-white md:text-5xl lg:text-6xl"
+        class="text-4xl font-semibold text-white md:text-5xl lg:text-6xl"
         set:html={headline}
       />
     </div>

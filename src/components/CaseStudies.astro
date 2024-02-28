@@ -30,7 +30,9 @@ const odd = sortedStudies.filter((_, index) => index % 2 === 0);
             client={study.client}
             imgUrl={urlFor(study.thumbnail).url()}
             href={
-              study.draftText === null ? `/case-study/${study.slug}` : undefined
+              study.draftText === null
+                ? `/case-studies/${study.slug}`
+                : undefined
             }
             incompleteText={study.draftText}
           >
@@ -46,7 +48,9 @@ const odd = sortedStudies.filter((_, index) => index % 2 === 0);
             client={study.client}
             imgUrl={urlFor(study.thumbnail).url()}
             href={
-              study.draftText === null ? `/case-study/${study.slug}` : undefined
+              study.draftText === null
+                ? `/case-studies/${study.slug}`
+                : undefined
             }
             incompleteText={study.draftText}
           >
