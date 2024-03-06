@@ -55,7 +55,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <link rel="canonical" href={canonicalURL} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+
+    {
+      description ? (
+        <meta property="og:description" content={description} />
+      ) : null
+    }
+
     <meta property="og:url" content={canonicalURL} />
     <meta
       property="og:image"
@@ -66,7 +72,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+
+    {
+      description ? (
+        <meta property="twitter:description" content={description} />
+      ) : null
+    }
+
     <meta
       name="twitter:image"
       content={caseStudy ? canonicalURL + "/og.png" : "/og.png"}
