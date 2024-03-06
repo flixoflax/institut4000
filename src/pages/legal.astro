@@ -7,7 +7,13 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Legal | Institut 4000">
+<Layout
+  title="Legal | Institut 4000"
+  description="I take the protection of your personal data very seriously. I process
+    personal data gathered when visiting my websites in compliance with
+    applicable data protection legislation. I neither publish your data nor
+    transmit them to third parties on an unauthorized basis."
+>
   <Navbar addSlash client:load />
   <PageHeader headline='Imprint & <br class="sm:hidden" /> Privacy Policy'>
     I take the protection of your personal data very seriously. I process

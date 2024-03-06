@@ -23,7 +23,7 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  site: "https://institut4000.io",
+  site: "https://www.institut4000.io",
   integrations: [
     tailwind(),
     sanityIntegration({
