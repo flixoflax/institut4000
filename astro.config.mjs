@@ -5,16 +5,15 @@ const {
   PUBLIC_SANITY_PROJECT_ID,
   PUBLIC_SANITY_DATASET,
 } = loadEnv(import.meta.env.MODE, process.cwd(), "");
-
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
-
 const projectId = PUBLIC_SANITY_STUDIO_PROJECT_ID || PUBLIC_SANITY_PROJECT_ID;
 const dataset = PUBLIC_SANITY_STUDIO_DATASET || PUBLIC_SANITY_DATASET;
-
 import { sanityIntegration } from "@sanity/astro";
 import react from "@astrojs/react";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,6 +23,7 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  site: "https://institut4000.io",
   integrations: [
     tailwind(),
     sanityIntegration({
@@ -34,5 +34,6 @@ export default defineConfig({
       // `false` if you want to ensure fresh data
     }),
     react(),
+    sitemap(),
   ],
 });
