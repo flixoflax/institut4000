@@ -10,7 +10,7 @@ Astro.response.statusText = "Not found";
 
 <Layout title="Not found | Institut 4000">
   <div class="flex min-h-screen flex-col justify-between bg-black">
-    <Navbar addSlash />
+    <Navbar addSlash client:load />
     <div class="h-20"></div>
     <CTA title={"Beam me up, Scotty!"} href={"/"}>
       A little lost? Let's try again right from the start.

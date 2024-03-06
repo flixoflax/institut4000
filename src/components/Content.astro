@@ -67,7 +67,7 @@ const styleText =
             flushTextBlocks(); // Flush any accumulated text blocks before rendering a YouTube embed
             elements.push(
               <div data-aos={textColor ? "fade-up" : undefined}>
-                <Youtube client:idle {...item} />
+                <Youtube client:load {...item} />
               </div>,
             );
           } else {

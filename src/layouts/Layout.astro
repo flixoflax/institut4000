@@ -19,10 +19,12 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 const copyrightYear = new Date().getFullYear();
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -34,10 +36,7 @@ const copyrightYear = new Date().getFullYear();
     <meta http-equiv="Pragma" content="cache" />
     <meta name="robots" content="INDEX,FOLLOW" />
     <meta http-equiv="content-Language" content="en" />
-    <meta
-      name="description"
-      content="Institut 4000 serves as the personal brand of Niels Clormann, who specializes in designing and developing digital experiences from idea to final product."
-    />
+    {description ? <meta name="description" content={description} /> : null}
     <meta
       name="keywords"
       content="institut4000, institut 4000, niels clormann, full-stack development, ux/ui-design, it-consulting, product management"
@@ -57,6 +56,7 @@ const copyrightYear = new Date().getFullYear();
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#171717" />
     <meta name="msapplication-TileColor" content="#171717" />
     <meta name="theme-color" content="#ffffff" />

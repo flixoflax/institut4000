@@ -10,8 +10,11 @@ import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Institut 4000">
-  <Navbar client:idle />
+<Layout
+  title="Institut 4000"
+  description="Institut 4000 serves as the personal brand of Niels Clormann, who specializes in designing and developing digital experiences from idea to final product."
+>
+  <Navbar client:load />
   <Hero />
   <main>
     <About />

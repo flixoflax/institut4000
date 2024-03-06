@@ -8,12 +8,7 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Legal | Institut 4000">
-  <link
-    rel="canonical"
-    href="https://www.institut4000.io/legal"
-    slot="header"
-  />
-  <Navbar addSlash />
+  <Navbar addSlash client:load />
   <PageHeader headline='Imprint & <br class="sm:hidden" /> Privacy Policy'>
     I take the protection of your personal data very seriously. I process
     personal data gathered when visiting my websites in compliance with
