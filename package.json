@@ -38,6 +38,7 @@
     "@types/react": "^18.2.59",
     "@types/react-dom": "^18.2.19",
     "@vercel/analytics": "^1.2.2",
+    "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.10",
     "aos": "^2.3.4",
     "astro": "^4.4.5",

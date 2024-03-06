@@ -1,14 +1,14 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/Navbar";
-import CaseStudyHeader from "../../components/CaseStudyHeader.astro";
-import CTA from "../../components/CTA.astro";
-import Footer from "../../components/Footer.astro";
-import { getCaseStudies } from "../../util/sanity";
+import Layout from "../../../layouts/Layout.astro";
+import Navbar from "../../../components/Navbar";
+import CaseStudyHeader from "../../../components/CaseStudyHeader.astro";
+import CTA from "../../../components/CTA.astro";
+import Footer from "../../../components/Footer.astro";
+import { getCaseStudies } from "../../../util/sanity";
 import type { InferGetStaticParamsType } from "astro";
-import { getCaseStudy } from "../../util/sanity";
-import Container from "../../layouts/Container.astro";
-import Content from "../../components/Content.astro";
+import { getCaseStudy } from "../../../util/sanity";
+import Container from "../../../layouts/Container.astro";
+import Content from "../../../components/Content.astro";
 
 export async function getStaticPaths() {
   const studies = await getCaseStudies();

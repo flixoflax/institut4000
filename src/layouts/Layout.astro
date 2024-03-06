@@ -20,9 +20,10 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 interface Props {
   title: string;
   description?: string;
+  caseStudy?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, caseStudy = false } = Astro.props;
 const copyrightYear = new Date().getFullYear();
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -52,11 +53,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="revisit-after" content="2 days" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta
+      property="og:image"
+      content={caseStudy ? canonicalURL + "/og.png" : "/og.png"}
+    />
+
+    {caseStudy ? <meta property="og:type" content={"article"} /> : null}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content={caseStudy ? canonicalURL + "/og.png" : "/og.png"}
+    />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href={canonicalURL} />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#171717" />
     <meta name="msapplication-TileColor" content="#171717" />
     <meta name="theme-color" content="#ffffff" />
