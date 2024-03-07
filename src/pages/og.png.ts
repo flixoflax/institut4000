@@ -34,7 +34,7 @@ export async function GET() {
             src: me.buffer,
             style: {
               width: "500px",
-              height: "600px",
+              height: "630px",
               objectFit: "cover",
             },
           },
@@ -105,7 +105,7 @@ export async function GET() {
     html as unknown as ReactElement<unknown, JSXElementConstructor<unknown>>,
     {
       width: 1200,
-      height: 600,
+      height: 630,
       fonts: [
         {
           name: "Geist Sans Bold",
