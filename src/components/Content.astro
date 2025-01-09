@@ -2,6 +2,7 @@
 import { type Image as ImageType, isImage } from "@sanity/types";
 import type { PortableTextBlock } from "@portabletext/types";
 import { type Props as YoutubeType, Youtube, isYoutubeEmbed } from "./Youtube";
+import { type Props as VideoType, Video, isVideoEmbed } from "./Video";
 import { Image } from "astro:assets";
 import { urlFor } from "../util/image";
 import { hexToRgbA } from "../util/color";
@@ -9,7 +10,9 @@ import { PortableText } from "astro-portabletext";
 
 interface Props {
   left?: boolean;
-  content: Array<PortableTextBlock | ImageType | YoutubeType> | null;
+  content: Array<
+    PortableTextBlock | ImageType | YoutubeType | VideoType
+  > | null;
   textColor?: string;
 }
 
@@ -68,6 +71,13 @@ const styleText =
             elements.push(
               <div data-aos={textColor ? "fade-up" : undefined}>
                 <Youtube client:load {...item} />
+              </div>,
+            );
+          } else if (isVideoEmbed(item)) {
+            flushTextBlocks();
+            elements.push(
+              <div data-aos={textColor ? "fade-up" : undefined}>
+                <Video client:load {...item} />
               </div>,
             );
           } else {

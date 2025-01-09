@@ -143,7 +143,12 @@ export default defineType({
       name: "content",
       title: "Content",
       type: "array",
-      of: [{ type: "block" }, { type: "image" }, { type: "youtube" }],
+      of: [
+        { type: "block" },
+        { type: "image" },
+        { type: "youtube" },
+        { type: "video" },
+      ],
     }),
   ],
 });
