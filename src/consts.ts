@@ -8,21 +8,17 @@ export const SITE: Site = {
 export const HOME: Metadata = {
   TITLE: "Home",
   DESCRIPTION:
-    "Niels Clormann is a development enthusiast with a passion for design, exploring new entrepreneurial opportunities in technology.",
-};
-
-export const BLOG: Metadata = {
-  TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
-};
-
-export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "Where I have worked and what I have done.",
+    "Institut 4000 is the professional practice of Niels Clormann, building purpose-driven digital solutions at the intersection of development, design, and entrepreneurship. ",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION:
-    "A collection of my projects, with links to repositories and demos.",
+    "Browse digital solutions by Niels Clormann at Institut 4000. Independent projects and client commissions showcasing purpose-driven design and development.",
+};
+
+export const COMMISSIONS: Metadata = {
+  TITLE: "Projects",
+  DESCRIPTION:
+    "Browse digital solutions by Niels Clormann at Institut 4000. Independent projects and client commissions showcasing purpose-driven design and development.",
 };

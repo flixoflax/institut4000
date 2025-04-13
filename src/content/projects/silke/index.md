@@ -1,5 +1,6 @@
 ---
 title: "Silke"
+image: "./thumbnail.png"
 description: "A wearable companion that sees the world with you."
 date: "7 Jan 2025"
 ---

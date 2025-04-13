@@ -1,6 +1,7 @@
 ---
+image: "./thumbnail.webp"
 title: "Deutsche Bahn"
-logoUrl: "/img/clients/db.png"
+logo: "./logo.png"
 description: "Transforming a construction site into an interactive journey"
 date: "6 Mar 2024"
 ---

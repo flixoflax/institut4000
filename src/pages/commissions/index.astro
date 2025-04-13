@@ -3,33 +3,35 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "~/layouts/PageLayout.astro";
 import Container from "~/components/Container.astro";
 import ArrowCard from "~/components/ArrowCard.astro";
-import { PROJECTS } from "~/consts";
+import { COMMISSIONS } from "~/consts";
 
-const data = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
+const data = (await getCollection("commissions"))
+  .filter((commission) => !commission.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 type Acc = {
-  [year: string]: CollectionEntry<"projects">[];
+  [year: string]: CollectionEntry<"commissions">[];
 };
 
-const projects = data.reduce((acc: Acc, project) => {
-  const year = project.data.date.getFullYear().toString();
+const commissions = data.reduce((acc: Acc, commission) => {
+  const year = commission.data.date.getFullYear().toString();
   if (!acc[year]) {
     acc[year] = [];
   }
-  acc[year].push(project);
+  acc[year].push(commission);
   return acc;
 }, {});
 
-const years = Object.keys(projects).sort((a, b) => parseInt(b) - parseInt(a));
+const years = Object.keys(commissions).sort(
+  (a, b) => parseInt(b) - parseInt(a)
+);
 ---
 
-<PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+<PageLayout title={COMMISSIONS.TITLE} description={COMMISSIONS.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
       <div class="animate font-semibold text-black dark:text-white">
-        Projects
+        Commissions
       </div>
       <div class="space-y-4">
         {
@@ -38,9 +40,9 @@ const years = Object.keys(projects).sort((a, b) => parseInt(b) - parseInt(a));
               <div class="font-semibold text-black dark:text-white">{year}</div>
               <div>
                 <ul class="flex flex-col gap-4">
-                  {projects[year].map((project) => (
+                  {commissions[year].map((commission) => (
                     <li>
-                      <ArrowCard entry={project} />
+                      <ArrowCard entry={commission} />
                     </li>
                   ))}
                 </ul>

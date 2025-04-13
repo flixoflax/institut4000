@@ -1,21 +1,45 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageFunction } from "astro:content";
 import Container from "~/components/Container.astro";
 import Link from "~/components/Link.astro";
 import { SITE } from "~/consts";
+
+interface Props {
+  clientLogo?: ImageMetadata;
+}
+const { clientLogo } = Astro.props as Props;
 ---
 
 <header>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
-      <a
-        href="/"
-        target="_self"
-        class="inline-block hover:text-black hover:dark:text-white text-black dark:text-white text-xl"
-      >
-        <div class="font-bold">
-          {SITE.NAME}
-        </div>
-      </a>
+      <div class="flex flex-row items-center gap-x-3">
+        <a
+          href="/"
+          target="_self"
+          class="inline-block hover:text-black hover:dark:text-white text-black dark:text-white text-xl"
+        >
+          <div class="font-bold">
+            {SITE.NAME}
+          </div>
+        </a>
+        {
+          clientLogo && (
+            <>
+              <div>✕</div>
+              <Image
+                src={clientLogo}
+                height={40}
+                quality={100}
+                layout="full-width"
+                alt=""
+                class="object-contain object-left h-5"
+              />
+            </>
+          )
+        }
+      </div>
 
       <!-- <nav class="flex gap-1">
         <Link href="/blog"> blog </Link>
