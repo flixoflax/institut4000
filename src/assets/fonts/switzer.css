@@ -1,0 +1,27 @@
+/**
+* @license
+*
+* Font Family: Switzer
+* Designed by: Jérémie Hornus
+* URL: https://www.fontshare.com/fonts/switzer
+* © 2025 Indian Type Foundry
+*
+* Switzer Regular 
+* Switzer Semibold 
+
+*
+*/
+@font-face {
+  font-family: "Switzer";
+  src: url("./Switzer-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("./Switzer-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}

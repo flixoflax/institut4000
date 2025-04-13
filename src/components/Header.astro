@@ -1,0 +1,33 @@
+---
+import Container from "~/components/Container.astro";
+import Link from "~/components/Link.astro";
+import { SITE } from "~/consts";
+---
+
+<header>
+  <Container>
+    <div class="flex flex-wrap gap-y-2 justify-between">
+      <a
+        href="/"
+        target="_self"
+        class="inline-block hover:text-black hover:dark:text-white text-black dark:text-white text-xl"
+      >
+        <div class="font-bold">
+          {SITE.NAME}
+        </div>
+      </a>
+
+      <!-- <nav class="flex gap-1">
+        <Link href="/blog"> blog </Link>
+        <span>
+          {`/`}
+        </span>
+        <Link href="/work"> work </Link>
+        <span>
+          {`/`}
+        </span>
+        <Link href="/projects"> projects </Link>
+      </nav> -->
+    </div>
+  </Container>
+</header>
