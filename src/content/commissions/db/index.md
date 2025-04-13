@@ -1,7 +1,8 @@
 ---
 title: "Deutsche Bahn"
-description: "Transforming a Construction Site into an Interactive Journey"
-date: "2024"
+logoUrl: "/img/clients/db.png"
+description: "Transforming a construction site into an interactive journey"
+date: "6 Mar 2024"
 ---
 
 ## Every electronic thing you see in this room, was designed, built, and programmed by me.

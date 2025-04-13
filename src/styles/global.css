@@ -42,9 +42,10 @@ footer {
 }
 
 article {
-  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply max-w-full prose dark:prose-invert;
   @apply prose-headings:font-semibold prose-p:font-sans;
   @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-img:mx-auto prose-img:my-auto;
 }
 
 @layer utilities {
@@ -57,6 +58,12 @@ article {
     @apply text-black dark:text-white;
     @apply decoration-black/25 dark:decoration-white/50;
   }
+
+  /* article p:has(img) {
+    @apply min-w-full;
+    @apply -mx-48;
+    @apply py-10;
+  } */
 }
 
 .animate {
