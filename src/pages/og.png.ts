@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ImageResponse } from "@vercel/og";
-import { HOME, SITE } from "~/consts";
+import { HOME } from "~/consts";
 
 export async function GET() {
   // Load custom fonts
