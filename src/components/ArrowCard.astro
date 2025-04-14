@@ -13,7 +13,7 @@ const { entry } = Astro.props;
   href={`/${entry.collection}/${entry.slug}`}
   class="relative group flex flex-col justify-end overflow-hidden h-56 sm:h-96 rounded-md border border-black/15 dark:border-white/20 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
 >
-  <!-- Optimized Image background with object-cover -->
+  <!-- Optimized Image background with object-cover and zoom effect -->
   <Image
     src={entry.data.image}
     alt={entry.data.title || ""}
@@ -24,7 +24,7 @@ const { entry } = Astro.props;
     loading="lazy"
     decoding="async"
     fetchpriority="low"
-    class="absolute inset-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
   />
 
   <!-- Gradient overlay covering only bottom half -->
