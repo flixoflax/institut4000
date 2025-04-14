@@ -1,3 +1,4 @@
+@import url("https://api.fontshare.com/v2/css?f[]=gambarino@400&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
@@ -24,7 +25,7 @@ body {
   @apply font-sans antialiased;
   @apply flex flex-col;
   @apply bg-neutral-100 dark:bg-neutral-900;
-  @apply text-black/50 dark:text-white/75;
+  @apply !text-[#404040] dark:!text-[#D4D4D4];
 }
 
 header {
@@ -42,7 +43,7 @@ footer {
 }
 
 article {
-  @apply max-w-full prose dark:prose-invert;
+  @apply max-w-full prose prose-neutral dark:prose-invert;
   @apply prose-headings:font-semibold prose-p:font-sans;
   @apply prose-headings:text-black prose-headings:dark:text-white;
   @apply prose-img:mx-auto prose-img:my-auto;

@@ -8,17 +8,17 @@ export const SITE: Site = {
 export const HOME: Metadata = {
   TITLE: "Home",
   DESCRIPTION:
-    "Institut 4000 is the professional practice of Niels Clormann, building purpose-driven digital solutions at the intersection of development, design, and entrepreneurship. ",
+    "Institut 4000 is the professional practice of Niels Clormann, building digital solutions at the intersection of development, design, and entrepreneurship.",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION:
-    "Browse digital solutions by Niels Clormann at Institut 4000. Independent projects and client commissions showcasing purpose-driven design and development.",
+    "Niels Clormann's personal projects. Independent work created at Institut 4000 to explore interesting problems and new ideas.",
 };
 
 export const COMMISSIONS: Metadata = {
-  TITLE: "Projects",
+  TITLE: "Commissions",
   DESCRIPTION:
-    "Browse digital solutions by Niels Clormann at Institut 4000. Independent projects and client commissions showcasing purpose-driven design and development.",
+    "Client work by Niels Clormann at Institut 4000. Digital solutions developed for organizations seeking purposeful design and functionality.",
 };
