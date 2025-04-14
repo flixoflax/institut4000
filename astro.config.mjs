@@ -12,6 +12,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  site: "https://institut4000.io",
+  site: "https://www.institut4000.io",
   integrations: [sitemap(), mdx()],
 });
