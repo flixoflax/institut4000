@@ -1,5 +1,5 @@
 ---
-image: "./thumbnail.webp"
+image: "./thumbnail.png"
 title: "Deutsche Bahn"
 logo: "./logo.png"
 description: "Transforming a construction site into an interactive journey"
@@ -33,7 +33,7 @@ The development process involved learning to design electronic circuits, a field
 
 ---
 
-![The Information Center](thumbnail.webp)
+![The Information Center](thumbnail.png)
 
 ---
 

@@ -6,14 +6,14 @@ import { readingTime } from "~/lib/utils";
 
 interface Props {
   params: { slug: string };
-  props: { project: CollectionEntry<"projects"> };
+  props: { commission: CollectionEntry<"commissions"> };
 }
 
 export async function GET({ props }: Props) {
-  const { project } = props;
+  const { commission } = props;
 
   // Calculate reading time
-  const readingTimeText = readingTime(project.body);
+  const readingTimeText = readingTime(commission.body);
 
   // Load custom fonts
   const SwitzerSemiBold = fs.readFileSync(
@@ -23,13 +23,21 @@ export async function GET({ props }: Props) {
     path.resolve("./src/assets/fonts/Switzer-Regular.woff")
   );
 
-  // Load project cover image
-  const projectCover = fs.readFileSync(
+  // Load commission cover image
+  const commissionCover = fs.readFileSync(
     process.env.NODE_ENV === "development"
       ? path.resolve(
-          project.data.image.src.replace(/\?.*/, "").replace("/@fs", "")
+          commission.data.image.src.replace(/\?.*/, "").replace("/@fs", "")
         )
-      : path.resolve(project.data.image.src.replace("/", "dist/"))
+      : path.resolve(commission.data.image.src.replace("/", "dist/"))
+  );
+
+  const commissionLogo = fs.readFileSync(
+    process.env.NODE_ENV === "development"
+      ? path.resolve(
+          commission.data.logo.src.replace(/\?.*/, "").replace("/@fs", "")
+        )
+      : path.resolve(commission.data.logo.src.replace("/", "dist/"))
   );
 
   // Create the OpenGraph image structure
@@ -57,7 +65,7 @@ export async function GET({ props }: Props) {
               position: "relative",
             },
             children: [
-              // Institut 4000 at the top
+              // Institut 4000 and commission logo at the top
               {
                 type: "div",
                 props: {
@@ -77,6 +85,31 @@ export async function GET({ props }: Props) {
                           fontFamily: "Switzer Semibold",
                         },
                         children: "Institut 4000",
+                      },
+                    },
+                    {
+                      type: "div",
+                      props: {
+                        style: {
+                          marginLeft: "14px",
+                          marginRight: "14px",
+                          fontSize: "28px",
+                          fontFamily: "Switzer Regular",
+                          color: "#404040",
+                        },
+                        children: "×",
+                      },
+                    },
+                    {
+                      type: "img",
+                      props: {
+                        src: `data:image/png;base64,${commissionLogo.toString(
+                          "base64"
+                        )}`,
+                        style: {
+                          height: "30px",
+                          objectFit: "contain",
+                        },
                       },
                     },
                   ],
@@ -102,7 +135,7 @@ export async function GET({ props }: Props) {
                           fontFamily: "Switzer Semibold",
                           lineHeight: 1.2,
                         },
-                        children: project.data.title,
+                        children: commission.data.title,
                       },
                     },
                     {
@@ -114,7 +147,7 @@ export async function GET({ props }: Props) {
                           marginTop: "16px",
                           color: "#404040",
                         },
-                        children: project.data.description,
+                        children: commission.data.description,
                       },
                     },
                   ],
@@ -141,7 +174,7 @@ export async function GET({ props }: Props) {
                           fontFamily: "Switzer Regular",
                           color: "#404040",
                         },
-                        children: `${project.data.date.toLocaleDateString(
+                        children: `${commission.data.date.toLocaleDateString(
                           "en-US",
                           {
                             year: "numeric",
@@ -163,7 +196,7 @@ export async function GET({ props }: Props) {
           type: "div",
           props: {
             style: {
-              display: "flex", // Added this to fix the error
+              display: "flex",
               position: "relative",
               width: "33%",
               height: "100%",
@@ -173,7 +206,7 @@ export async function GET({ props }: Props) {
               {
                 type: "img",
                 props: {
-                  src: `data:image/png;base64,${projectCover.toString(
+                  src: `data:image/png;base64,${commissionCover.toString(
                     "base64"
                   )}`,
                   style: {
@@ -209,11 +242,11 @@ export async function GET({ props }: Props) {
   });
 }
 
-// Generate an image for each project in the collection
+// Generate an image for each commission in the collection
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
+  const commissions = await getCollection("commissions");
+  return commissions.map((commission) => ({
+    params: { slug: commission.slug },
+    props: { commission },
   }));
 }

@@ -8,17 +8,18 @@ import type { ImageFunction } from "astro:content";
 type Props = {
   title?: string;
   clientLogo?: ImageMetadata;
+  image?: string;
   description: string;
 };
 
-const { title, description, clientLogo } = Astro.props;
+const { title, description, clientLogo, image } = Astro.props;
 const actualTitle = title ? `${title} | ${SITE.NAME}` : SITE.NAME;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={actualTitle} description={description} />
+    <Head title={actualTitle} description={description} image={image} />
   </head>
   <body>
     <Header clientLogo={clientLogo} />
