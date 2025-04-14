@@ -48,7 +48,7 @@ export async function GET({ props }: Props) {
         display: "flex",
         width: "100%",
         height: "100%",
-        background: "#f8f8f8",
+        background: "#f5f5f5",
         fontFamily: "Switzer Regular",
       },
       children: [
